@@ -1,13 +1,13 @@
 const express = require("express");
 const cors = require("cors");
 const app = express();
-const { getPhraseWords } = require('./controller.js')
+const { getPhraseWords, sendPhrase } = require('./controller.js')
 
 app.use(cors());
 app.use(express.json())
 
 app.get("/phrase", getPhraseWords)
-
+app.post("/phrase", sendPhrase)
 
 
 

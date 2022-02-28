@@ -1,7 +1,6 @@
 {
   "name": "foundations-capstone",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -11,6 +10,15 @@
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
-    "express": "^4.17.2"
-  }
+    "express": "^4.17.3"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/McKenzie-Allen/foundations-Capstone-mad-lib.git"
+  },
+  "bugs": {
+    "url": "https://github.com/McKenzie-Allen/foundations-Capstone-mad-lib/issues"
+  },
+  "homepage": "https://github.com/McKenzie-Allen/foundations-Capstone-mad-lib#readme",
+  "description": ""
 }

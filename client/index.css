@@ -1,0 +1,15 @@
+#neededWordForm {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+#wordFormContain {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+}
+
+.neededWords {
+    margin: 5px;
+}
