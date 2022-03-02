@@ -4,24 +4,7 @@ const wordSubmit = document.querySelector('#wordSubmit')
 
 let currentPhrase = 0;
 let currentPhraseLength = 0;
-// const getPhrase = function() {
-//     axios.get('http://localhost:5050/phrase')
-//         .then(function(res) {
-//             const wordArr = res.data;
-//             const word = document.createElement('input')
-//             while (wordForm.hasChildNodes()) {
-//                 wordForm.removeChild(wordForm.firstChild)
-//             }
 
-//             wordArr.forEach(element => {
-//                 word.type = 'text'
-//                 word.placeholder = element
-//                 word.className = 'neededWords'
-//                 wordForm.appendChild(word.cloneNode(true))
-//             });
-
-//         });
-// };
 
 const getPhrase = function() {
     axios.get('http://localhost:5050/phrase')
@@ -47,18 +30,21 @@ const getPhrase = function() {
 };
 
 const seePhrase = function() {
-    words = []
-    for (i = 0; i > currentPhraseLength; i++) {
-        words.push(document.querySelector(`input[name="input 0]"`))
-    }
-    console.log(words)
+    words = document.querySelectorAll('.neededWords')
+    wordsSend = []
 
-    // axios.post('http://localhost:5050/phrase', body)
-    //     .then(function(res) {
-    //         console.log(phrase)
-    //     });
-    // currentPhrase = 0
-    // currentPhraseLength = 0
+    for (let i = 0; i < words.length; i++) {
+        wordsSend.push(words[i].value)
+    }
+    let body = {
+        id: currentPhrase,
+        words: wordsSend
+    }
+    axios.post('http://localhost:5050/phrase', body)
+        .then(function(res) {
+
+            console.log(res.data)
+        });
 }
 
 

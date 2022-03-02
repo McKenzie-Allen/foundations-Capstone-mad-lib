@@ -32,11 +32,15 @@ function data() {
 }
 
 function sendPhrase(req, res) {
+    const { id, words } = req.body
+    let correctPhrase = data().phrase.filter(function(value) {
+        return value.id === id
+    })
 
-    // let currentPhrase = data().filter(phrase => { phraseId === phrase.id })
-    // let completedPhrase = currentPhrase.finishPhrase(words)
-    // res.status(200).send(completedPhrase)
-    console.log(data().phrase[0].finishPhrase(["dog", "eye", "cat", "nose"]))
+    let results = correctPhrase[0].finishPhrase(words)
+
+    res.status(200).send(results)
+
 }
 
 
