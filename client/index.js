@@ -1,9 +1,11 @@
 const getButton = document.querySelector('#getButton')
 const wordForm = document.querySelector('#wordFormContain')
 const wordSubmit = document.querySelector('#wordSubmit')
+const phraseList = document.querySelector('#phraseList')
 
 let currentPhrase = 0;
 let currentPhraseLength = 0;
+let phraseArr = [];
 
 
 const getPhrase = function() {
@@ -19,6 +21,7 @@ const getPhrase = function() {
 
 
             neededWords.forEach(function(element, index) {
+
                 word.type = 'text'
                 word.placeholder = element
                 word.className = 'neededWords'
@@ -42,9 +45,28 @@ const seePhrase = function() {
     }
     axios.post('http://localhost:5050/phrase', body)
         .then(function(res) {
+            let { id, endPhrase } = res.data
 
-            console.log(res.data)
+            console.log(id)
+            console.log(endPhrase)
+            phraseArr.push(res.data)
+            let phraseCard = `<div class="phraseCard">
+            <h2>${endPhrase}</h2>
+            <button onclick="deleteCard(${id})">Delete</button>
+            </div>
+        `
+            phraseList.innerHTML += phraseCard
+
+
+            while (wordForm.hasChildNodes()) {
+                wordForm.removeChild(wordForm.firstChild)
+            }
         });
+}
+
+const deleteCard = function(id) {
+    const index = phraseArr.findIndex((element) => { element.id === id })
+    console.log(index)
 }
 
 

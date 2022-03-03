@@ -1,10 +1,5 @@
-#neededWordForm {
-    margin: 20px;
-    display: flex;
-    flex-direction: column;
-}
-
 #wordFormContain {
+    margin: auto;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -12,4 +7,31 @@
 
 .neededWords {
     margin: 5px;
+    border-radius: .7ch;
+    width: 200px;
+    background-color: rgb(216, 233, 240);
+}
+
+button {
+    margin: auto;
+    background-color: purple;
+    color: white;
+    border-radius: .7ch;
+    animation: mymove 5s infinite
+}
+
+@keyframes mymove {
+    50% {
+        background-color: rgb(16, 91, 121);
+    }
+}
+
+.phraseCard {
+    padding: 20px;
+    margin: 20px;
+}
+
+.phraseCard>h2 {
+    margin-bottom: 10px;
+    font-size: smaller;
 }

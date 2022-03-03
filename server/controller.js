@@ -2,7 +2,7 @@ const { application } = require("express")
 
 module.exports = { getPhraseWords, sendPhrase }
 
-const currentPhrase = []
+let phraseArr = []
 
 function data() {
     return {
@@ -38,14 +38,18 @@ function sendPhrase(req, res) {
     })
 
     let results = correctPhrase[0].finishPhrase(words)
+    let wholePhrase = {
+        id: id,
+        endPhrase: results
+    }
 
-    res.status(200).send(results)
+    res.status(200).send(wholePhrase)
 
 }
 
 
 function getPhraseWords(req, res) {
     const randomIndex = Math.floor(Math.random() * data().phrase.length)
-    const phrase = data().phrase[randomIndex];
-    res.status(200).send(phrase)
+    const phraseWords = data().phrase[randomIndex];
+    res.status(200).send(phraseWords)
 }
