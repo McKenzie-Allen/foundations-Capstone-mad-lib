@@ -1,6 +1,6 @@
 const { application } = require("express")
 
-module.exports = { getPhraseWords, sendPhrase }
+module.exports = { getPhraseWords, setPhrase, sendPhrase, deletePhrase }
 
 let phraseArr = []
 
@@ -31,7 +31,16 @@ function data() {
     }
 }
 
-function sendPhrase(req, res) {
+function deletePhrase(req, res) {
+    let {
+        index
+    } = req.params
+    phraseArr.splice(index, 1);
+    res.status(200).send("phrase has been deleted")
+
+}
+
+function setPhrase(req, res) {
     const { id, words } = req.body
     let correctPhrase = data().phrase.filter(function(value) {
         return value.id === id
@@ -42,6 +51,7 @@ function sendPhrase(req, res) {
         id: id,
         endPhrase: results
     }
+    phraseArr.push(wholePhrase)
 
     res.status(200).send(wholePhrase)
 
@@ -52,4 +62,9 @@ function getPhraseWords(req, res) {
     const randomIndex = Math.floor(Math.random() * data().phrase.length)
     const phraseWords = data().phrase[randomIndex];
     res.status(200).send(phraseWords)
+}
+
+function sendPhrase(req, res) {
+
+    res.status(200).send(phraseArr)
 }

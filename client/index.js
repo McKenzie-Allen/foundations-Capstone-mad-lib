@@ -3,12 +3,12 @@ const wordForm = document.querySelector('#wordFormContain')
 const wordSubmit = document.querySelector('#wordSubmit')
 const phraseList = document.querySelector('#phraseList')
 
+
 let currentPhrase = 0;
 let currentPhraseLength = 0;
-let phraseArr = [];
 
 
-const getPhrase = function() {
+const getPhraseWords = function() {
     axios.get('http://localhost:5050/phrase')
         .then(function(res) {
             const { id, neededWords } = res.data;
@@ -32,7 +32,9 @@ const getPhrase = function() {
         });
 };
 
-const seePhrase = function() {
+
+
+const setPhrase = function() {
     words = document.querySelectorAll('.neededWords')
     wordsSend = []
 
@@ -45,30 +47,39 @@ const seePhrase = function() {
     }
     axios.post('http://localhost:5050/phrase', body)
         .then(function(res) {
-            let { id, endPhrase } = res.data
-
-            console.log(id)
-            console.log(endPhrase)
-            phraseArr.push(res.data)
-            let phraseCard = `<div class="phraseCard">
-            <h2>${endPhrase}</h2>
-            <button onclick="deleteCard(${id})">Delete</button>
-            </div>
-        `
-            phraseList.innerHTML += phraseCard
 
 
             while (wordForm.hasChildNodes()) {
                 wordForm.removeChild(wordForm.firstChild)
             }
+            seeAllPhrases();
+        });
+}
+const seeAllPhrases = function() {
+    phraseList.innerHTML = ``
+    axios.get('http://localhost:5050/all')
+        .then(function(res) {
+            res.data.forEach(function(element, index) {
+                let phraseCard = `<div class="phraseCard">
+                    <h2>Phrase${index+1}</h2>
+                    <h3>${element.endPhrase}</h3>
+                    <button onclick="deleteCard(${index})">Delete</button>
+                    </div>
+                `
+                phraseList.innerHTML += phraseCard
+
+            })
+
+        })
+}
+const deleteCard = function(index) {
+    axios.delete(`http://localhost:5050/phrase/${index}`)
+        .then(function(res) {
+            console.log(res.data)
+            seeAllPhrases();
         });
 }
 
-const deleteCard = function(id) {
-    const index = phraseArr.findIndex((element) => { element.id === id })
-    console.log(index)
-}
 
-
-wordSubmit.addEventListener('click', seePhrase)
-getButton.addEventListener('click', getPhrase)
+wordSubmit.addEventListener('click', setPhrase)
+getButton.addEventListener('click', getPhraseWords)
