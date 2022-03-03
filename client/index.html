@@ -9,28 +9,42 @@
     <title>Random Libs</title>
     <link rel="stylesheet" href="index.css">
 </head>
-<header>
-    <h1>Random Libs!!</h1>
-    <h2>Create funny Phrases with words you add.</h2>
-</header>
+
 
 <body>
-    <button id="getButton">Get phrase</button>
-    <form id="wordFormContain">
-
-    </form>
-    <div>
-        <button id="wordSubmit" type="submit">Add words to phrase</button>
-
+    <div id="header">
+        <h1>Random Libs!!</h1>
+        <h2>Create funny Phrases with words you add.</h2>
     </div>
-    <aside>
-        <section id="phraseList"></section>
-    </aside>
+    <main>
+        <button id="getButton">Get phrase</button>
 
 
 
-    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <script src="index.js"></script>
+        <form id="wordFormContain">
+
+
+        </form>
+
+
+        <div id="submitContain">
+            <button id="wordSubmit" type="submit">Add words to phrase</button>
+            <details>This is to submit your words and see the phrases you have made so far</details>
+            <aside>
+                <section id="phraseList"></section>
+            </aside>
+
+        </div>
+
+
+
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="index.js"></script>
+    </main>
+    <footer>
+        <p>Thanks for Playing</p>
+    </footer>
 </body>
 
 </html>

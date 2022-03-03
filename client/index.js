@@ -4,8 +4,11 @@ const wordSubmit = document.querySelector('#wordSubmit')
 const phraseList = document.querySelector('#phraseList')
 
 
+
 let currentPhrase = 0;
 let currentPhraseLength = 0;
+
+
 
 
 const getPhraseWords = function() {
@@ -32,8 +35,6 @@ const getPhraseWords = function() {
         });
 };
 
-
-
 const setPhrase = function() {
     words = document.querySelectorAll('.neededWords')
     wordsSend = []
@@ -54,7 +55,8 @@ const setPhrase = function() {
             }
             seeAllPhrases();
         });
-}
+};
+
 const seeAllPhrases = function() {
     phraseList.innerHTML = ``
     axios.get('http://localhost:5050/all')
@@ -71,15 +73,15 @@ const seeAllPhrases = function() {
             })
 
         })
-}
+};
+
 const deleteCard = function(index) {
     axios.delete(`http://localhost:5050/phrase/${index}`)
         .then(function(res) {
             console.log(res.data)
             seeAllPhrases();
         });
-}
-
+};
 
 wordSubmit.addEventListener('click', setPhrase)
 getButton.addEventListener('click', getPhraseWords)
