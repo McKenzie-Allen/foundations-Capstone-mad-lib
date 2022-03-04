@@ -1,0 +1,5 @@
+Capstone foundations MPV
+
+The user can set words to a random phrase that is randomly selected by the server
+The user can input words and get the completed phrase in return
+The user can remove a completed phrase.

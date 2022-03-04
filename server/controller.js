@@ -24,7 +24,17 @@ function data() {
                     const animal1 = wordArr[1]
                     const bodypart2 = wordArr[2]
                     const animal2 = wordArr[3]
-                    return (`${bodypart1} of newt and toe of ${animal1}, ${bodypart2} of bat and tongue of ${animal2}`)
+                    return (`Double, double toil and trouble. ${bodypart1} of newt and toe of ${animal1}, ${bodypart2} of bat and tongue of ${animal2}`)
+                }
+            },
+            {
+                id: 3,
+                neededWords: ["verb", "plural noun", "plural noun"],
+                finishPhrase(wordArr) {
+                    const verb = wordArr[0]
+                    const noun1 = wordArr[1]
+                    const noun2 = wordArr[2]
+                    return (`You can ${verb} more flies with ${noun1} than you can with ${noun2}`)
                 }
             }
         ]

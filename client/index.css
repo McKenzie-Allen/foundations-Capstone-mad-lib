@@ -1,3 +1,16 @@
+header>h1 {
+    color: rgb(0, 0, 0);
+    animation: shimmer 2s infinite;
+    width: auto;
+    text-align: center;
+}
+
+@keyframes shimmer {
+    50% {
+        color: rgb(49, 15, 104);
+    }
+}
+
 #wordFormContain {
     margin: 20px;
     display: flex;
